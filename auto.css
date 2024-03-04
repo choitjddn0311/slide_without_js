@@ -10,7 +10,7 @@ ul , li {
     display: none;
 }
 .slidebox {
-    max-width: 1000px;
+    min-width: 1000px;
     width: 100%;
     margin: 0 auto;
 }
@@ -33,12 +33,12 @@ ul , li {
     position: absolute;
     z-index: 1;
     top: 50%;
-    transform: translateX(-50%);
+    transform: translateY(-50%);
     padding: 20px;
     border-radius: 50%;
     cursor: pointer;
 }
-label .left {
+label.left {
     left: 20px;
     background-color: #5f5f5f;
     background-image: url(image/arrow-left-solid.svg);
@@ -54,3 +54,21 @@ label .right {
     background-size: 50%;
     background-repeat: no-repeat;
 }
+
+[id="slide01"]:checked ~.slidelist .slideitem {transform: translateX(0);}
+[id="slide02"]:checked ~.slidelist .slideitem {transform: translateX(-100%);}
+[id="slide03"]:checked ~.slidelist .slideitem {transform: translateX(-200%);}
+[id="slide04"]:checked ~.slidelist .slideitem {transform: translateX(-300%);}
+
+@keyframes slide01 {
+    0% {left: 0%;}
+    23% {left: 0%;}
+    25% {left: -100%;}
+    48% {left: -100%;}
+    50% {left: -200%;}
+    73% {left: -200%;}
+    75% {left: -300%;}
+    98% {left: -300%;}
+    100% {left: 0%;}
+}
+[id="slide01"]:checked ~.slidelist .slideitem {transform: translateX(0); animation: slide01 20s infinite;}
